@@ -19,7 +19,7 @@ const DENY = [
   /\b(top pick|can'?t miss|guaranteed|risk-free|sure thing|undervalued gem)\b/i,
   /\b(will|is going to) (rise|fall|double|crash|soar)\b/i,
 ];
-const EXEMPT = /\b(never|do not|don't|must not|avoid|no ")|\bnot a recommendation/i;
+const EXEMPT = /^(?:\s*[-*]\s*|\s*\d+\.\s*)?(?:never|do not|don't|must not|avoid|no ")\b/i;
 
 export function parseSkill(text) {
   const m = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/.exec(text);
@@ -52,8 +52,10 @@ export function validateSkill(dirName, text) {
   if (!/\b(never|do not)\b/i.test(rules)) errors.push(`${dirName}: the Rules section must contain at least one prohibition`);
 
   body.split(/\r?\n/).forEach((line, i) => {
-    if (EXEMPT.test(line)) return;
-    for (const rx of DENY) if (rx.test(line)) errors.push(`${dirName}: line ${i + 1} has action or hype language ${rx}: "${line.trim().slice(0, 80)}"`);
+    for (const clause of line.trim().split(/;|[.!?]\s+|\b(?:but|however|then)\b/i)) {
+      if (EXEMPT.test(clause.trim())) continue;
+      for (const rx of DENY) if (rx.test(clause)) errors.push(`${dirName}: line ${i + 1} has action or hype language ${rx}: "${clause.trim().slice(0, 80)}"`);
+    }
   });
   return errors;
 }
