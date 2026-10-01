@@ -9,10 +9,11 @@ Information, not advice. None of these skills tells anyone what to buy or sell, 
 Works with Claude Code, Cursor, GitHub Copilot, Gemini CLI, Cline and other agents that read `SKILL.md` files:
 
 ```bash
-npx skills add https://github.com/frankxai/geninvestor-skills/tree/agent/codex/review-fixes
+git clone --branch agent/codex/review-fixes --depth 1 https://github.com/frankxai/geninvestor-skills.git
+npx skills add ./geninvestor-skills/skills
 ```
 
-This branch-pinned command targets the draft trial. The default-branch install is available after merge.
+These commands target the draft trial explicitly. To inspect the four skills before installing, append `--list` to the second command. The clone avoids ambiguity in installers that split slash-containing branch names in GitHub tree URLs. The default-branch install is available after merge.
 
 Or copy a folder from `skills/` into your agent's skills directory.
 
