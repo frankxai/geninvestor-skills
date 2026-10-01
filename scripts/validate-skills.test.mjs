@@ -55,3 +55,9 @@ test("the same words are allowed on a line that forbids them", () => {
 test("every skill in this repository validates", () => {
   assert.deepEqual(validate(), []);
 });
+
+test("a prohibition cannot exempt advice in a different clause", () => {
+  for (const bad of ["Never guess; you should buy this today.", "Do not guess. You should sell it now.", "This is not a recommendation: go long.", "Avoid guessing but increase your position.", "Never guess, then sell it now."]) {
+    assert.ok(validateSkill("demo-skill", good.replace("1. Do the work.", bad)).some((e) => /action or hype/.test(e)), bad);
+  }
+});
