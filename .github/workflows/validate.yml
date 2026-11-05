@@ -1,0 +1,22 @@
+name: Validate skills
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+      - name: Validate every skill (structure, and no action or hype language)
+        run: node scripts/validate-skills.mjs
+      - name: Validator tests
+        run: node --test "scripts/*.test.mjs"

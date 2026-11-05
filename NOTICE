@@ -1,0 +1,9 @@
+geninvestor-skills
+Copyright 2026 GenInvestor contributors
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Acknowledgements
+The layout of these skills (a folder per skill, a SKILL.md with frontmatter, and a workflow) follows the
+convention used by anthropics/financial-services (Apache-2.0) and the wider agent-skills ecosystem. The
+text of every skill here is original; no text was copied from those projects.
