@@ -4,6 +4,10 @@
 
 Information, not advice. None of these skills tells anyone what to buy or sell, and a validator in this repository fails the build if one ever does.
 
+## Try it in a partner meeting
+
+[Six paid-plan flags. How many paying studios?](examples/paying-studios/README.md) Paste a fictional software company's pilot records into ChatGPT or Claude. Check the customer-conversion claim, write a partner note, then remove the ledger and see which conclusions still hold. A separate reviewer’s key gives the arithmetic and the questions worth taking back to the founder.
+
 ## Install
 
 Works with Claude Code, Cursor, GitHub Copilot, Gemini CLI, Cline and other agents that read `SKILL.md` files:
