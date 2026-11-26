@@ -4,18 +4,29 @@
 
 Information, not advice. None of these skills tells anyone what to buy or sell, and a validator in this repository fails the build if one ever does.
 
+## Try it in a partner meeting
+
+[Six paid-plan flags. How many paying studios?](examples/paying-studios/README.md) Paste a fictional software company's pilot records into ChatGPT or Claude. Check the customer-conversion claim, write a partner note, then remove the ledger and see which conclusions still hold. A separate reviewer’s key gives the arithmetic and the questions worth taking back to the founder.
+
 ## Install
 
 Works with Claude Code, Cursor, GitHub Copilot, Gemini CLI, Cline and other agents that read `SKILL.md` files:
 
+Clone the public repository and install from its local skills directory:
+
 ```bash
-git clone --branch agent/codex/review-fixes --depth 1 https://github.com/frankxai/geninvestor-skills.git
+git clone https://github.com/frankxai/geninvestor-skills.git
 npx skills add ./geninvestor-skills/skills
 ```
 
-These commands target the draft trial explicitly. To inspect the four skills before installing, append `--list` to the second command. The clone avoids ambiguity in installers that split slash-containing branch names in GitHub tree URLs. The default-branch install is available after merge.
+To preview the available skills before installation, append `--list` to the second command.
 
-Or copy a folder from `skills/` into your agent's skills directory.
+For a manual install, copy the folder for the skill you want into your agent's skills directory. For example, from the directory containing your clone, install `source-check` into a new project:
+
+```bash
+mkdir -p research-project/.agents/skills
+cp -R geninvestor-skills/skills/source-check research-project/.agents/skills/
+```
 
 ## The skills
 
